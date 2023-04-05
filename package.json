@@ -45,6 +45,7 @@
     "bootstrap-tagsinput": "github:bootstrap-tagsinput/bootstrap-tagsinput",
     "chart.js": "^2.9.4",
     "eonasdan-bootstrap-datetimepicker": "^4.15.35",
+    "firebase": "^9.19.1",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-connect": "^5.7.0",

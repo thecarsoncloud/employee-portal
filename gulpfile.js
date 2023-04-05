@@ -29,7 +29,7 @@ gulp.task('watch', function() {
 
 gulp.task('server', function() {
   connect.server({
-    port: 9001,
+    port: 3000,
     livereload: true
   });
 });
@@ -37,6 +37,6 @@ gulp.task('server', function() {
 gulp.task('default', gulp.parallel('server', 'watch', function() {
   gulp.src(__filename)
     .pipe(open({
-      uri: 'http://localhost:9001/examples/dashboard.html'
+      uri: 'http://localhost:3000/examples/pages/login.html'
     }));
 }));

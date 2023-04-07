@@ -204,19 +204,13 @@
                   <!--START OF THE PROGRESS-->
                   <div class="wizard-navigation">
                     <div class="progress-with-circle">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" style="width: 21%;"></div>
+                      <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3" style="width: 21%;"></div>
                     </div>
                     <ul>
                       <li class="nav-item">
                         <a class="nav-link active" href="#about" data-toggle="tab">
                           <i class="tim-icons icon-single-02"></i>
                           <p>Info</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#schedule" data-toggle="tab">
-                          <i class="tim-icons icon-calendar-60"></i>
-                          <p>Date</p>
                         </a>
                       </li>
                       <li class="nav-item">
@@ -257,7 +251,7 @@
                                 <i class="tim-icons icon-single-02"></i>
                               </div>
                             </div>
-                            <input type="text" name="firstname" class="form-control" placeholder="Site Contact 1 First Name..."> <!--This is where to edit the form info-->
+                            <input type="text" name="firstname" class="form-control" placeholder="Site Owner 1 First Name..."> <!--This is where to edit the form info-->
                           </div>
                           <!--End of "Site Contact 1 First Name..." Code-->
 
@@ -268,7 +262,7 @@
                                 <i class="tim-icons icon-email-85"></i>
                               </div>
                             </div>
-                            <input type="email" required name="email" class="form-control" placeholder="Site Contact 1 Email...">
+                            <input type="email" required name="email" class="form-control" placeholder="Site Owner 1 Email...">
                           </div>
                         </div>
                         <!--EO "Site Contact 1 Email"-->
@@ -281,7 +275,7 @@
                                 <i class="tim-icons icon-caps-small"></i>
                               </div>
                             </div>
-                            <input type="text" name="lastname" placeholder="Site Contact 1 Last Name..." class="form-control">
+                            <input type="text" name="lastname" placeholder="Site Owner 1 Last Name..." class="form-control">
                           </div>
                           <!--EO "Site Contact 1 Last Name"-->
 
@@ -292,7 +286,7 @@
                                 <i class="tim-icons icon-mobile"></i>
                               </div>
                             </div>
-                            <input type="number" name="number" class="form-control" placeholder="Site Contact 1 Phone #">
+                            <input type="number" name="number" class="form-control" placeholder="Site Owner 1 Phone #">
                           </div>
                         </div>
                         <!--EO "Site Contact 1 Phone #"-->
@@ -305,7 +299,7 @@
                                 <i class="tim-icons icon-single-02"></i>
                               </div>
                             </div>
-                            <input type="text" name="firstname" class="form-control" placeholder="Site Contact 2 First Name..."> <!--This is where to edit the form info-->
+                            <input type="text" name="firstname" class="form-control" placeholder="Site Owner 2 First Name..."> <!--This is where to edit the form info-->
                           </div>
                           <!--End of "Site Contact 2 First Name..." Code-->
 
@@ -316,7 +310,7 @@
                                 <i class="tim-icons icon-email-85"></i>
                               </div>
                             </div>
-                            <input type="email" required name="email" class="form-control" placeholder="Site Contact 2 Email...">
+                            <input type="email" required name="email" class="form-control" placeholder="Site Owner 2 Email...">
                           </div>
                         </div>
                         <!--EO "Site Contact 2 Email"-->
@@ -329,7 +323,7 @@
                                 <i class="tim-icons icon-caps-small"></i>
                               </div>
                             </div>
-                            <input type="text" name="lastname" placeholder="Site Contact 2 Last Name..." class="form-control">
+                            <input type="text" name="lastname" placeholder="Site Owner 2 Last Name..." class="form-control">
                           </div>
                           <!--EO "Site Contact 2 Last Name"-->
 
@@ -340,7 +334,7 @@
                                 <i class="tim-icons icon-mobile"></i>
                               </div>
                             </div>
-                            <input type="number" name="number" class="form-control" placeholder="Site Contact 2 Phone #">
+                            <input type="number" name="number" class="form-control" placeholder="Site Owner 2 Phone #">
                           </div>
                         </div>
                         <!--EO "Site Contact 2 Phone #"-->
@@ -348,17 +342,17 @@
                     </div>
 
 
-                    <!--BO Slide 2 (Date/Time Picker)-->
-                        <!--Title of Form-->
+                    <!--BO Slide 2 (Date/Time Picker)
+                        Title of Form
                     <div class="tab-pane show active" id="schedule">
                       <h5 class="info-text">Pick a Day/time</h5>
                       <div class="row justify-content-center mt-5">
                         <div class="container">
-                          <!--TO DO: add date/time picker: https://getdatepicker.com/4/#minimum-setup  && http://localhost:3000/docs/1.0/plugins/datetimepicker.html-->
+                          TO DO: add date/time picker: https://getdatepicker.com/4/#minimum-setup  && http://localhost:3000/docs/1.0/plugins/datetimepicker.html
                         </div>
                       </div>
                     </div>
-                    <!--EO Slide 2 (Date/Time Picker)-->
+                    EO Slide 2 (Date/Time Picker) -->
 
 
                     <!--BO Slide 3-->
@@ -390,38 +384,38 @@
                     <div class="tab-pane" id="address">
                       <div class="row justify-content-center">
                         <div class="col-sm-12">
-                          <h5 class="info-text"> Are you living in a nice area? </h5>
+                          <h5 class="info-text"> Site Address </h5>
                         </div>
                         <div class="col-sm-7">
                           <div class="form-group">
-                            <label>Street Name</label>
-                            <input type="text" class="form-control">
+                            <label>Street</label>
+                            <input type="text" class="form-control" placeholder="(Ex.) 1234 Example St.">
                           </div>
                         </div>
                         <div class="col-sm-3">
                           <div class="form-group">
-                            <label>Street No.</label>
-                            <input type="text" class="form-control">
+                            <label>City</label>
+                            <input type="text" class="form-control" placeholder="Chicago">
                           </div>
                         </div>
                         <div class="col-sm-5">
                           <div class="form-group">
-                            <label>City</label>
-                            <input type="text" class="form-control">
+                            <label>State</label>
+                            <input type="text" class="form-control" placeholder="IL">
                           </div>
                         </div>
                         <div class="col-sm-5">
                           <div class="form-group">
                             <label>Country</label>
-                            <select class="selectpicker" data-size="7" data-style="btn btn-primary" title="Single Select">
-                              <option value="Afghanistan"> Afghanistan </option>
-                              <option value="Albania"> Albania </option>
+                            <select class="selectpicker" data-size="7" data-style="btn btn-primary" title="Select a Country">
+                              <option value="United States">United States</option>
+                          <!--   <option value="Albania"> Albania </option>
                               <option value="Algeria"> Algeria </option>
                               <option value="American Samoa"> American Samoa </option>
                               <option value="Andorra"> Andorra </option>
                               <option value="Angola"> Angola </option>
                               <option value="Anguilla"> Anguilla </option>
-                              <option value="Antarctica"> Antarctica </option>
+                              <option value="Antarctica"> Antarctica </option>-->
                             </select>
                           </div>
                         </div>
@@ -432,7 +426,12 @@
                 <div class="card-footer">
                   <div class="pull-right">
                     <input type='button' class='btn btn-next btn-fill btn-green btn-wd' name='next' value='Next' />
-                    <input type='button' class='btn btn-finish btn-fill btn-primary btn-wd' name='finish' value='Finish' />
+                    <input type="button" class="btn btn-finish btn-fill btn-primary btn-wd" name="create" value="create" onclick="redirectToProjects()">
+                      <script>
+                        function redirectToProjects() {
+                          window.location.href = "/examples/projects.html";
+                        }
+                      </script>
                   </div>
                   <div class="pull-left">
                     <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Previous' />

@@ -34,28 +34,13 @@
   <link href="../../assets/css/black-dashboard.css?v=1.1.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../../assets/demo/demo.css" rel="stylesheet" />
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>                  
-
-  <!-- Firebase configuration -->
-  <script>
-    import { firebase } from "@firebase/app";
-    import "@firebase/auth";
-    var firebaseConfig = {
-      apiKey: "AIzaSyAp7M-k4kgSUAfzEZj2p14tnaec2pONbU4",
-      authDomain: "ciellie.firebaseapp.com",
-      databaseURL: "https://ciellie-default-rtdb.firebaseio.com",
-      projectId: "ciellie",
-      storageBucket: "ciellie.appspot.com",
-      messagingSenderId: "854485873054",
-      appId: "1:854485873054:web:dda7ca4484e81ebf1d268f",
-      measurementId: "G-W0V11M5Q70"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
-
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
 
 </head>
 
@@ -146,7 +131,7 @@
                 <div class="description">
                   <h3 class="info-title">Book and View Surveys</h3>
                   <p class="description">
-                    Seemless survey booking functionality to keep your team on-time and organized.
+                    Seamless survey booking functionality to keep your team on-time and organized.
                   </p>
                 </div>
               </div>
@@ -184,7 +169,7 @@
                           <i class="tim-icons icon-email-85"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Email" class="form-control" id="email-field">
+                      <input type="email" placeholder="Email" class="form-control" id="email-field">
                     </div>
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -194,60 +179,76 @@
                       </div>
                       <input type="password" class="form-control" placeholder="Password" id="password-field">
                     </div>
-                    <div class="form-check text-left">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" id="agree-terms">
-                        <span class="form-check-sign"></span>
-                        I agree to the
-                        <a href="javascript:void(0)">terms and conditions</a>.
-                      </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-round btn-lg" onclick="registerForm()">
-                      Register
-                    </button>
+                    <button class="btn btn-primary btn-round" onclick="registerForm()">Register</button>
                   </form>
-                  <script>
-                    const registerForm = () => {
-                      const name = document.querySelector('#name-field').value;
-                      const email = document.querySelector('#email-field').value;
-                      const password = document.querySelector('#password-field').value;
-                      const agreeTerms = document.querySelector('#agree-terms').checked;
-            
-                      // Validate form fields
-                      if (!name || !email || !password) {
-                        alert('Please fill out all fields');
-                        return;
-                      }
-                      if (!agreeTerms) {
-                        alert('Please agree to the terms and conditions');
-                        return;
-                      }
-            
-                      // Register user with Firebase
-                      firebase.auth().createUserWithEmailAndPassword(email, password)
-                      .then((userCredential) => {
-                        const user = userCredential.user;
-                        // Update user profile with name
-                        user.updateProfile({
-                          displayName: name
-                        }).then(() => {
-                          // Redirect to dashboard
-                          window.location.href = 'dashboard.html';
-                        }).catch((error) => {
-                          console.error(error);
-                        });
-                      })
-                      .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        alert(errorMessage);
-                        console.error(error);
-                      });
-                    };
-                  </script>
                 </div>
-              </div>
-            </div>            
+               </div>
+             </div>
+           </div>
+          </div>
+       </div>
+      </div>
+   </div>
+  <script>
+const firebaseConfig = {
+  // Your Firebase config here
+  apiKey: "AIzaSyAp7M-k4kgSUAfzEZj2p14tnaec2pONbU4",
+  authDomain: "ciellie.firebaseapp.com",
+  databaseURL: "https://ciellie-default-rtdb.firebaseio.com",
+  projectId: "ciellie",
+  storageBucket: "ciellie.appspot.com",
+  messagingSenderId: "854485873054",
+  appId: "1:854485873054:web:dda7ca4484e81ebf1d268f",
+  measurementId: "G-W0V11M5Q70"
+};
+
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+const storage = firebase.storage();
+const storageRef = storage.ref();
+
+// Function to handle the registration form submission
+function registerForm() {
+  // Get user's full name, email, and password from the form input fields
+  var name = document.getElementById("name-field").value;
+  var email = document.getElementById("email-field").value;
+  var password = document.getElementById("password-field").value;
+
+  // Call Firebase Authentication API to create a new user
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(function(userCredential) {
+      // Update the user's profile with their full name
+      userCredential.user.updateProfile({
+        displayName: name
+      });
+
+      // Store the user's registration data in Firebase Realtime Database
+      var userId = userCredential.user.uid;
+      var userData = {
+        name: name,
+        email: email,
+        userId: userId
+      };
+      database.ref("users/" + userId).set(userData);
+
+      // Create a new folder in Firebase Storage with the user's name
+      var userFolderRef = storageRef.child(userId);
+      console.log(userFolderRef); // Add this line
+
+      userFolderRef.put(new Blob()); // Create an empty file in the folder to indicate its creation
+
+      // Redirect the user to the next page of your application
+      window.location.href = "examples/dashboard.html";
+    })
+    .catch(function(error) {
+      // Handle any errors that occur during the registration process
+      var errorMessage = error.message;
+      console.log(errorMessage);
+    });
+}
+
+  </script>
+  
       <footer class="footer">
         <div class="container-fluid">
           <ul class="nav">
@@ -313,9 +314,6 @@
   <script src="../../assets/js/plugins/jquery-jvectormap.js"></script>
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
   <script src="../../assets/js/plugins/nouislider.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <!-- Place this tag in your head or just before your close body tag. -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
   <script src="../../assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
@@ -435,9 +433,8 @@
       });
     });
   </script>
-  <script>
+  <!--<script>
     $(document).ready(function() {
-
       $(".slider").slick({
         dots: false,
         infinite: true,
@@ -479,7 +476,8 @@
         ]
       });
     });
-  </script>
+  </script>-->
+
 </body>
 
 

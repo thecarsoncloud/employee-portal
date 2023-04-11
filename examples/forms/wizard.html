@@ -357,27 +357,79 @@
 
                     <!--BO Slide 3-->
 
+
                     <div class="tab-pane" id="account">
                       <h5 class="info-text">Upload any additional files that are essential to the project</h5>
                       <div class="row justify-content-center">
                         <div class="col-lg-10 text-center">
-                          <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                            <div class="fileinput-new thumbnail">
-                              <img src="../../assets/img/image_placeholder.jpg" alt="...">
+                          <form id="image-upload-form">
+                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                              <div class="fileinput-new thumbnail">
+                                <img src="../../assets/img/image_placeholder.jpg" alt="...">
+                              </div>
+                              <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                              <div>
+                                <span class="btn btn-primary btn-simple btn-file">
+                                  <span class="fileinput-new">Select image</span>
+                                  <span class="fileinput-exists">Change</span>
+                                  <input type="file" name="image" id="image-input" />
+                                </span>
+                                <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                              </div>
                             </div>
-                            <div class="fileinput-preview fileinput-exists thumbnail"></div>
-                            <div>
-                              <span class="btn btn-primary btn-simple btn-file">
-                                <span class="fileinput-new">Select image</span>
-                                <span class="fileinput-exists">Change</span>
-                                <input type="file" name="..." />
-                              </span>
-                              <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
-                            </div>
-                          </div>
+                            <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+                            <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
+                            <script>
+                              // Initialize Firebase
+                              const firebaseConfig = {
+                                apiKey: "AIzaSyAp7M-k4kgSUAfzEZj2p14tnaec2pONbU4",
+                                authDomain: "ciellie.firebaseapp.com",
+                                databaseURL: "https://ciellie-default-rtdb.firebaseio.com",
+                                projectId: "ciellie",
+                                storageBucket: "ciellie.appspot.com",
+                                messagingSenderId: "854485873054",
+                                appId: "1:854485873054:web:dda7ca4484e81ebf1d268f",
+                                measurementId: "G-W0V11M5Q70"
+                              };
+                              firebase.initializeApp(firebaseConfig);
+                    
+                              // Get a reference to the Firebase storage service
+                              const storage = firebase.storage();
+                    
+                              // Get a reference to the image input element
+                              const imageInput = document.getElementById('image-input');
+                    
+                              // Get a reference to the image upload form
+                              const imageUploadForm = document.getElementById('image-upload-form');
+                    
+                              // Add an event listener to the form's submit event
+                              imageUploadForm.addEventListener('submit', function(event) {
+                                event.preventDefault(); // prevent the form from submitting normally
+                    
+                                // Get the selected image file
+                                const imageFile = imageInput.files[0];
+                    
+                                // Set a default image file if no file is selected
+                                const defaultImageFile = new File([""], "default-image.jpg", {type: 'image/jpeg'});
+                    
+                                // Use the selected image file or the default image file
+                                const selectedImageFile = imageFile || defaultImageFile;
+                    
+                                // Create a reference to the Firebase storage location where the image will be stored
+                                const storageRef = storage.ref().child('notes/' + selectedImageFile.name);
+                    
+                                // Upload the image file to Firebase storage
+                                storageRef.put(selectedImageFile).then(function(snapshot) {
+                                  console.log('Uploaded a blob or file!');
+                                });
+                              });
+                            </script>
+                          </form>
                         </div>
                       </div>
                     </div>
+                    
+                    
                     <!--EO Slide-->
 
 

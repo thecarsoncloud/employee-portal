@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@fullcalendar/core": "4.3.1",
+    "auth": "^0.0.9",
     "bootstrap-notify": "github:mouse0270/bootstrap-notify",
     "bootstrap-switch": "3.3.4",
     "bootstrap-tagsinput": "github:bootstrap-tagsinput/bootstrap-tagsinput",
@@ -59,7 +60,8 @@
     "nouislider": "14.0.2",
     "perfect-scrollbar": "1.4.0",
     "sweetalert2": "8.16.3",
-    "tablesorter": "2.31.1"
+    "tablesorter": "2.31.1",
+    "uuid": "^9.0.0"
   },
   "homepage": "https://themes.getbootstrap.com/product/black-dashboard-pro-premium-bootstrap-4-admin/?_ga=2.143239282.69692347.1519629130-329288944.1519374311",
   "devDependencies": {

@@ -441,25 +441,25 @@
                         <div class="col-sm-7">
                           <div class="form-group">
                             <label>Street</label>
-                            <input type="text" class="form-control" placeholder="(Ex.) 1234 Example St.">
+                            <input type="text" class="form-control" placeholder="(Ex.) 1234 Example St." id="steet-input">
                           </div>
                         </div>
                         <div class="col-sm-3">
                           <div class="form-group">
                             <label>City</label>
-                            <input type="text" class="form-control" placeholder="Chicago">
+                            <input type="text" class="form-control" placeholder="Chicago" id="city-input">
                           </div>
                         </div>
                         <div class="col-sm-5">
                           <div class="form-group">
                             <label>State</label>
-                            <input type="text" class="form-control" placeholder="IL">
+                            <input type="text" class="form-control" placeholder="IL" id="state-input">
                           </div>
                         </div>
                         <div class="col-sm-5">
                           <div class="form-group">
                             <label>Country</label>
-                            <select class="selectpicker" data-size="7" data-style="btn btn-primary" title="Select a Country">
+                            <select class="selectpicker" data-size="7" data-style="btn btn-primary" title="Select a Country" id="country-input">
                               <option value="United States">United States</option>
                           <!--   <option value="Albania"> Albania </option>
                               <option value="Algeria"> Algeria </option>
@@ -478,7 +478,7 @@
                 <div class="card-footer">
                   <div class="pull-right">
                     <input type='button' class='btn btn-next btn-fill btn-green btn-wd' name='next' value='Next' />
-                    <input type="button" class="btn btn-finish btn-fill btn-primary btn-wd" name="create" value="create" onclick="redirectToProjects()">
+                    <input type="button" class="btn btn-finish btn-fill btn-primary btn-wd" name="create" value="create" onclick="redirectToProjects()" id="create-button">
                       <script>
                         function redirectToProjects() {
                           window.location.href = "/examples/projects.html";
